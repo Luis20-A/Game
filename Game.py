@@ -21,7 +21,7 @@ for tent in range(tents):
     else:
         print("\nWrong! Try again!\n")
 else:
-    if platform.system() == "Windowns":
+    if platform.system() == "Windows":
         directory = r"C:\Windows"
     else:
         directory = r"/sbin"

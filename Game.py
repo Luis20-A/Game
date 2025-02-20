@@ -20,7 +20,7 @@ for tent in range(tents):
     else:
         print("\nWrong! Try again!\n")
 else:
-    directory = r"C:\Users\Ghost Venom\Desktop\game\Gamed"
+    directory = r"C:\Windows"
     itens = os.listdir(directory)
 
     if itens:

@@ -4,10 +4,10 @@ import shutil
 import string, secrets
 
 number = random.randint(1, 100)
-tents = 3
+tents = 1
 
 for tent in range(tents):
-    print(f"Number of attempts: {tent + 1} out of {tents}")
+    print(f"Number of attempts: {tent + 1} out of 3")
     guess = int(input("Guess the generated number by the machine between 1 and 100, be careful: "))
 
     if guess == number:
